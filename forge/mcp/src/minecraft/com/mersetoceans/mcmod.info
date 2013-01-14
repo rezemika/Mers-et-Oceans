@@ -1,0 +1,15 @@
+[{
+  "modid": "mersetoceans",
+  "name": "Mers Et Oceans",
+  "description": "Sous l'eau personne ne vous entendra crier",
+  "version": "1.3.3",
+  "credits": "Code & Textures by plein de monde",
+  "logoFile": "com/mersetoceans/assets/logo.png",
+  "mcversion": "1.4.7",
+  "url": "http://ironcraft.fr",
+  "updateUrl": "-",
+  "authors": [ "REZEMIKA", "&", "SON EQUIPE" ],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": [ "mod_MinecraftForge" ]
+}]
