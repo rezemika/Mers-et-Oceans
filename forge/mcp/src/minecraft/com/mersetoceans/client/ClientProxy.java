@@ -13,6 +13,7 @@ public class ClientProxy extends CommonProxy {
 	
 	public static final int RENDERWATER = RenderingRegistry.getNextAvailableRenderId();
 	public static final int RENDERVAGUE = RenderingRegistry.getNextAvailableRenderId();
+	public static final int RENDERPANE = RenderingRegistry.getNextAvailableRenderId();
 	
 	@Override
 	public void registerRenderThings() {
@@ -22,6 +23,8 @@ public class ClientProxy extends CommonProxy {
 		
 		RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderWater());
+		RenderingRegistry.registerBlockHandler(new RenderVague());
+		RenderingRegistry.registerBlockHandler(new RenderPane());
 	}
 	
 }

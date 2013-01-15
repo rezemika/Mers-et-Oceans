@@ -55,128 +55,235 @@ public class RenderVague implements ISimpleBlockRenderingHandler {
         var5.setBrightness(block.getMixedBrightnessForBlock(renderer.blockAccess, x, y, z));
         var5.setColorOpaque_F(1.0F * 1.0F * var7, 1.0F * 1.0F * var8, 1.0F * 1.0F * var9);
         
-        var5.addVertexWithUV((double)(x + 0), (double)y + var24, (double)(z + 0), var38 - var44 - var42, var40 - var44 + var42);
-        var5.addVertexWithUV((double)(x + 0), (double)y + var26, (double)(z + 1), var38 - var44 + var42, var40 + var44 + var42);
-        var5.addVertexWithUV((double)(x + 1), (double)y + var28, (double)(z + 1), var38 + var44 + var42, var40 + var44 - var42);
-        var5.addVertexWithUV((double)(x + 1), (double)y + var30, (double)(z + 0), var38 + var44 - var42, var40 - var44 - var42);
+        double p = 0, r = 0, a = 0, b = 0, c = 0, d = 0;
+        double cx = x, cy = y, cz = z;
+		p = 1F/16F;
+        
+		a = ( b = ( c = ( d = p*12 )));
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        
+        
+        cx = x+1; cy = y; cz = z;
+		a = ( b = p*12 );
+		c = ( d = p*5 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-1; cy = y; cz = z;
+		c = ( d = p*12 );
+		a = ( b = p*5 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x; cy = y; cz = z+1;
+		a = ( d = p*12 );
+		c = ( b = p*5 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x; cy = y; cz = z-1;
+		c = ( b = p*12 );
+		a = ( d = p*5 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        
+        
+        cx = x+2; cy = y; cz = z;
+    	a = ( b = p*5 );
+    	c = ( d = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-2; cy = y; cz = z;
+    	c = ( d = p*5 );
+    	a = ( b = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x; cy = y; cz = z+2;
+    	a = ( d = p*5 );
+    	b = ( c = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x; cy = y; cz = z-2;
+    	c = ( b = p*5 );
+    	a = ( d = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+    	
+
+        cx = x+1; cy = y; cz = z+1;
+		a = p*12;
+		d = ( b = p*5 );
+		c = p*3;
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-1; cy = y; cz = z-1;
+		c = p*12;
+		d = ( b = p*5 );
+		a = p*3;
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-1; cy = y; cz = z+1;
+		d = p*12;
+		a = ( c = p*5 );
+		b = p*3;
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x+1; cy = y; cz = z-1;
+		b = p*12;
+		a = ( c = p*5 );
+		d = p*3;
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+    	
+
+        cx = x+2; cy = y; cz = z+1;
+		a = p*5;
+		b = p*3;
+    	c = ( d = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-2; cy = y; cz = z+1;
+		d = p*5;
+		c = p*3;
+    	a = ( b = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x+2; cy = y; cz = z-1;
+		b = p*5;
+		a = p*3;
+    	c = ( d = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-2; cy = y; cz = z-1;
+		c = p*5;
+		d = p*3;
+    	a = ( b = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x+1; cy = y; cz = z+2;
+		a = p*5;
+		d = p*3;
+    	b = ( c = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-1; cy = y; cz = z+2;
+		d = p*5;
+		a = p*3;
+    	b = ( c = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x+1; cy = y; cz = z-2;
+		b = p*5;
+		c = p*3;
+    	a = ( d = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-1; cy = y; cz = z-2;
+		c = p*5;
+		b = p*3;
+    	a = ( d = p*-2 );
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+    	
+
+        cx = x+2; cy = y; cz = z+2;
+		a = p*3;
+    	b = ( c = ( d = p*-2 ));
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-2; cy = y; cz = z-2;
+		c = p*3;
+    	a = ( b = ( d = p*-2 ));
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x-2; cy = y; cz = z+2;
+		d = p*3;
+    	a = ( b = ( c = p*-2 ));
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
+        cx = x+2; cy = y; cz = z-2;
+		b = p*3;
+    	a = ( c = ( d = p*-2 ));
+        var5.addVertexWithUV(cx+0, y+a, cz+0, var38 - var44 - var42, var40 - var44 + var42);
+        var5.addVertexWithUV(cx+0, y+b, cz+1, var38 - var44 + var42, var40 + var44 + var42);
+        var5.addVertexWithUV(cx+1, y+c, cz+1, var38 + var44 + var42, var40 + var44 - var42);
+        var5.addVertexWithUV(cx+1, y+d, cz+0, var38 + var44 - var42, var40 - var44 - var42);
+
         
         renderer.renderMinY = 0.0D;
         renderer.renderMaxY = 1.0D;
         return var13;
         
-        
-        
-        
-		/*double p = 0, r = 0, a = 0, b = 0, c = 0, d = 0;
-	    if ( iblockaccess.getBiomeGenForCoords(x, y).biomeName == "Ocean" ) {
-	        if ( y == 62 ) {
-	        	
-	        	
-	        	
-	        	TileEntityVague tile = (TileEntityVague) iblockaccess.getBlockTileEntity(x, y, z);
-	
-		    	System.err.println(tile.step);
-	        	if( tile.step > 0 ) {
-		    		r = p*-12;
-		    		a = r; b = r; c = r; d = r;
-		    	}
-		    	*/
-	        	
-	        	//MinecraftMO publicMinecraft = new MinecraftMO();
-	        	//Timer timer = publicMinecraft.getTimer();
-	        	//mc.theWorld.getCelestialAngle(1.0F);
-	        	//System.err.println(y);
-	        	//System.err.println( ((World) iblockaccess).getMoonPhase(timer.renderPartialTicks) );
-	        	
-				/*
-				p = 1F/16F;
-				
-				
-		    	if( iblockaccess.getBlockId(x, y+1, z) == MersEtOceans.vague.blockID ) {
-		    		a = ( b = ( c = ( d = p*-12 )));
-		    	}
-		    	
-		    	else if( iblockaccess.getBlockId(x-1, y+1, z) == MersEtOceans.vague.blockID ) {
-		    		a = ( b = p*-12 );
-		    		c = ( d = p*-5 );
-		    	} else if( iblockaccess.getBlockId(x+1, y+1, z) == MersEtOceans.vague.blockID ) {
-		    		c = ( d = p*-12 );
-		    		a = ( b = p*-5 );
-		    	} else if( iblockaccess.getBlockId(x, y+1, z-1) == MersEtOceans.vague.blockID ) {
-		    		a = ( d = p*-12 );
-		    		c = ( b = p*-5 );
-		    	} else if( iblockaccess.getBlockId(x, y+1, z+1) == MersEtOceans.vague.blockID ) {
-		    		c = ( b = p*-12 );
-		    		a = ( d = p*-5 );
-		    	}
-		    	
-		    	else if( iblockaccess.getBlockId(x-2, y+1, z) == MersEtOceans.vague.blockID ) {
-		    		a = ( b = p*-5 );
-		    	} else if( iblockaccess.getBlockId(x+2, y+1, z) == MersEtOceans.vague.blockID ) {
-		    		c = ( d = p*-5 );
-		    	} else if( iblockaccess.getBlockId(x, y+1, z-2) == MersEtOceans.vague.blockID ) {
-		    		a = ( d = p*-5 );
-		    	} else if( iblockaccess.getBlockId(x, y+1, z+2) == MersEtOceans.vague.blockID ) {
-		    		c = ( b = p*-5 );
-		    	}
-		    	
-		    	else if( iblockaccess.getBlockId(x-1, y+1, z-1) == MersEtOceans.vague.blockID ) {
-		    		a = p*-12;
-		    		d = ( b = p*-5 );
-		    		c = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+1, y+1, z+1) == MersEtOceans.vague.blockID ) {
-		    		c = p*-12;
-		    		d = ( b = p*-5 );
-		    		a = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+1, y+1, z-1) == MersEtOceans.vague.blockID ) {
-		    		d = p*-12;
-		    		a = ( c = p*-5 );
-		    		b = p*-3;
-		    	} else if( iblockaccess.getBlockId(x-1, y+1, z+1) == MersEtOceans.vague.blockID ) {
-		    		b = p*-12;
-		    		a = ( c = p*-5 );
-		    		d = p*-3;
-		    	}
-		    	
-		    	else if( iblockaccess.getBlockId(x-2, y+1, z-1) == MersEtOceans.vague.blockID ) {
-		    		a = p*-5;
-		    		b = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+2, y+1, z-1) == MersEtOceans.vague.blockID ) {
-		    		d = p*-5;
-		    		c = p*-3;
-		    	} else if( iblockaccess.getBlockId(x-2, y+1, z+1) == MersEtOceans.vague.blockID ) {
-		    		b = p*-5;
-		    		a = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+2, y+1, z+1) == MersEtOceans.vague.blockID ) {
-		    		c = p*-5;
-		    		d = p*-3;
-		    	} else if( iblockaccess.getBlockId(x-1, y+1, z-2) == MersEtOceans.vague.blockID ) {
-		    		a = p*-5;
-		    		d = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+1, y+1, z-2) == MersEtOceans.vague.blockID ) {
-		    		d = p*-5;
-		    		a = p*-3;
-		    	} else if( iblockaccess.getBlockId(x-1, y+1, z+2) == MersEtOceans.vague.blockID ) {
-		    		b = p*-5;
-		    		c = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+1, y+1, z+2) == MersEtOceans.vague.blockID ) {
-		    		c = p*-5;
-		    		b = p*-3;
-		    	}
-		    	
-		    	else if( iblockaccess.getBlockId(x-2, y+1, z-2) == MersEtOceans.vague.blockID ) {
-		    		a = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+2, y+1, z+2) == MersEtOceans.vague.blockID ) {
-		    		c = p*-3;
-		    	} else if( iblockaccess.getBlockId(x+2, y+1, z-2) == MersEtOceans.vague.blockID ) {
-		    		d = p*-3;
-		    	} else if( iblockaccess.getBlockId(x-2, y+1, z+2) == MersEtOceans.vague.blockID ) {
-		    		b = p*-3;
-		    	}
-		    	
-	        }
-	    }*/
-		
 	}
 
 	@Override

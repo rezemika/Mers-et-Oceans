@@ -8,6 +8,7 @@ import com.mersetoceans.common.TileEntityVague;
 import com.mersetoceans.common.blocks.BlockGrassMO;
 import com.mersetoceans.common.blocks.BlockMO;
 import com.mersetoceans.common.blocks.BlockOreMO;
+import com.mersetoceans.common.blocks.BlockPaneMO;
 import com.mersetoceans.common.blocks.BlockStartVague;
 import com.mersetoceans.common.blocks.BlockStoneAbysses;
 import com.mersetoceans.common.blocks.BlockTallGrassMO;
@@ -61,7 +62,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "1.3.3")
+@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "1.3.4")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class MersEtOceans {
@@ -123,6 +124,15 @@ public class MersEtOceans {
 		EntityList.IDtoClassMapping.put(id, entity);
 		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
 	}
+	
+    // Ocean tabs
+    
+    public static CreativeTabs tabOceanMaterials = new CreativeTabsMO("OceansMaterials");
+    public static CreativeTabs tabOceanFood = new CreativeTabsMO("OceansFood");
+    public static CreativeTabs tabOceanBlock = new CreativeTabsMO("OceansBlock");
+    
+    
+    // items
 
 	public static ItemHuitreFermee huitreFermee    = new ItemHuitreFermee (700, 15,    MersEtOceans.tabOceanFood);
 	public static       ItemFoodMO huitreOuverte   = new ItemFoodMO       (702, 15+16, MersEtOceans.tabOceanFood, 4, .3F, false);
@@ -162,8 +172,9 @@ public class MersEtOceans {
    
     public static void itemRecipes() {}
     
+
     
-    
+    // block
     
 
 	public static  BlockTallGrassMO Herbe1           = new BlockTallGrassMO (712, 9,  1);
@@ -189,12 +200,12 @@ public class MersEtOceans {
 	public static        BlockOreMO rockRedstone     = new BlockOreMO       (723, 83, Item.redstone.itemID);
 	public static        BlockOreMO rockSpinel       = new BlockOreMO       (724, 85, spinel.itemID);
 	public static        BlockOreMO mineraiAbysses1  = new BlockOreMO       (725, 65, poudreAbysse.itemID);
-	public static        BlockOreMO mineraiPerle     = new BlockOreMO (714, 40, perle.itemID);
+	public static        BlockOreMO mineraiPerle     = new BlockOreMO       (714, 40, perle.itemID);
 	public static BlockStoneAbysses rock             = new BlockStoneAbysses(700);
-	//public static       BlockPaneMO verreRenforce    = new BlockPaneMO      (727, 34, 148, Material.glass, true);
-    public static             Block portal           = new BlockPortal(251, 34);
+	public static       BlockPaneMO verreRenforce    = new BlockPaneMO      (727, 34, 148, Material.glass, true);
+    public static             Block portal           = new BlockPortal      (251, 34);
 	public static        BlockWater waterStill;
-	public static        BlockVague vague            = new BlockVague(702, Material.glass);
+	public static        BlockVague vague            = new BlockVague       (702, Material.glass);
 	/* dev helper  public static BlockStartVague startvague = new BlockStartVague(701, Material.sponge);*/
 
 	private void blockInit() {
@@ -224,7 +235,8 @@ public class MersEtOceans {
 		mineraiPerle     .setCreativeTab(this.tabOceanBlock)    .setHardness(3F)  .setResistance(5F)                     .setStepSound(Block.soundStoneFootstep);
         portal           .setCreativeTab(this.tabOceanBlock);
 		waterStill       = new BlockWater(9, Material.water);
-		//verreRenforce    .setCreativeTab(this.tabOceanBlock)    .setHardness(0.3F)                                       .setStepSound(Block.soundGlassFootstep);
+		verreRenforce    .setCreativeTab(this.tabOceanBlock)    .setHardness(0.3F)                                       .setStepSound(Block.soundGlassFootstep);
+		vague            .setCreativeTab(this.tabOceanBlock);
 		
 	}
     
@@ -256,8 +268,9 @@ public class MersEtOceans {
 		setName(mineraiPerle, "mineraiPerle");
 		setName(waterStill, "water");
 		setName(portal, "portal");
+		setName(verreRenforce, "verreRenforce");
+		setName(vague, "vague");
 		//setName(startvague, "startvague");
-		//setName(verreRenforce, "verreRenforce");
     }
 
 	private void blockHarvest() {
@@ -285,7 +298,7 @@ public class MersEtOceans {
 	}
    
     public static void blockRegistration() {
-		//GameRegistry.registerBlock(verreRenforce, "verreRenforce");
+		GameRegistry.registerBlock(verreRenforce, "verreRenforce");
 		GameRegistry.registerBlock(basalte, "basalte");
 		GameRegistry.registerBlock(terreAbysse, "terreAbysse");
 		GameRegistry.registerBlock(torcheAbysse, "torcheAbysse");
@@ -320,12 +333,6 @@ public class MersEtOceans {
 		GameRegistry.addRecipe(new ItemStack(torcheAbysse, 1), new Object[] { "X", "O", 'X', poudreAbysse, 'O', Item.stick });
 		GameRegistry.addRecipe(new ItemStack(lampeAbysse,  1), new Object[] { " O ", "OXO", " O ", 'X', briqueAbyss, 'O', poudreAbysse });
 	}
-	
-    // Ocean tabs
-    
-    public static CreativeTabs tabOceanMaterials = new CreativeTabsMO("OceansMaterials");
-    public static CreativeTabs tabOceanFood = new CreativeTabsMO("OceansFood");
-    public static CreativeTabs tabOceanBlock = new CreativeTabsMO("OceansBlock");
 
     
     

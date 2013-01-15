@@ -10,7 +10,7 @@ import com.mersetoceans.MersEtOceans;
 import com.mersetoceans.client.ClientProxy;
 import com.mersetoceans.common.TileEntityVague;
 
-public class BlockVague extends BlockStationaryMO {
+public class BlockVague extends BlockFluidMO {
 
 	public BlockVague(int id, Material material) {
 		super(id, material);

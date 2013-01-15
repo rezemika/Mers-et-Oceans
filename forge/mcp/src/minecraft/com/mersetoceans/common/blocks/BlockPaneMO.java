@@ -3,6 +3,7 @@ package com.mersetoceans.common.blocks;
 import java.util.List;
 import java.util.Random;
 
+import com.mersetoceans.client.ClientProxy;
 import com.mersetoceans.common.CommonProxy;
 
 import net.minecraft.block.Block;
@@ -28,8 +29,7 @@ public class BlockPaneMO extends Block {
      */
     private final boolean canDropItself;
 
-    protected BlockPaneMO(int par1, int par2, int par3, Material par4Material, boolean par5)
-    {
+    public BlockPaneMO(int par1, int par2, int par3, Material par4Material, boolean par5) {
         super(par1, par2, par4Material);
         this.sideTextureIndex = par3;
         this.canDropItself = par5;
@@ -39,38 +39,14 @@ public class BlockPaneMO extends Block {
 	@Override
 	public String getTextureFile () { return CommonProxy.BLOCK_PNG; }
 
-    /**
-     * Returns the ID of the items to drop on destruction.
-     */
-    public int idDropped(int par1, Random par2Random, int par3)
-    {
+    public int idDropped(int par1, Random par2Random, int par3) {
         return !this.canDropItself ? 0 : super.idDropped(par1, par2Random, par3);
     }
 
-    /**
-     * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
-     * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
-     */
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
-
-    /**
-     * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
-     */
-    public boolean renderAsNormalBlock()
-    {
-        return false;
-    }
-
-    /**
-     * The type of render function that is called for this block
-     */
-    public int getRenderType()
-    {
-        return 18;
-    }
+    public boolean isOpaqueCube() { return false; }
+    public int getRenderBlockPass() { return 1; }
+    public boolean renderAsNormalBlock() { return false; }
+    public int getRenderType() { return ClientProxy.RENDERPANE; }
 
     @SideOnly(Side.CLIENT)
 
