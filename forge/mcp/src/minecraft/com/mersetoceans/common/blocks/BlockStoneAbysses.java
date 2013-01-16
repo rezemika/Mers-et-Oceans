@@ -14,8 +14,8 @@ import net.minecraft.src.ModLoader;
 
 public class BlockStoneAbysses extends BlockMO {
 
-	public BlockStoneAbysses(int id) {
-		super(id, 64, Material.rock);
+	public BlockStoneAbysses(int id, int texture) {
+		super(id, texture, Material.rock);
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setStepSound(Block.soundStoneFootstep);
