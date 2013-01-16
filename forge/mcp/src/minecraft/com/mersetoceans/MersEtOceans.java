@@ -62,7 +62,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "1.3.4")
+@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "1.3.5")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class MersEtOceans {
@@ -205,7 +205,7 @@ public class MersEtOceans {
 	public static       BlockPaneMO verreRenforce    = new BlockPaneMO      (727, 34, 148, Material.glass, true);
     public static             Block portal           = new BlockPortal      (251, 34);
 	public static        BlockWater waterStill;
-	public static        BlockVague vague            = new BlockVague       (702, Material.glass);
+	public static        BlockVague vague            = new BlockVague       (702, Material.water);
 	/* dev helper  public static BlockStartVague startvague = new BlockStartVague(701, Material.sponge);*/
 
 	private void blockInit() {

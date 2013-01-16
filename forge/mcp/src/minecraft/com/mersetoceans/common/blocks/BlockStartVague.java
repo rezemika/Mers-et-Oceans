@@ -29,7 +29,7 @@ public class BlockStartVague extends Block {
     		
     		if ( /*bwater == 9 &&*/ bempty == 0 ) {
 
-    			MersEtOceans.vague.init(world, x, y-2, z, x, z, 0);
+    			//MersEtOceans.vague.init(world, x, y-2, z, x, z, 0);
     			//MersEtOceans.waterStill.init(world, x, y-2, z, x, z, 0);
     			
 	        }
