@@ -60,7 +60,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "1.3.8")
+@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "1.3.9")
 @NetworkMod(clientSideRequired = true, serverSideRequired = true)
 
 public class MersEtOceans {
