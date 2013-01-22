@@ -9,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class BlockPortal extends Block {
@@ -21,15 +22,21 @@ public class BlockPortal extends Block {
 	public String getTextureFile () { return CommonProxy.BLOCK_PNG; }
 	
 	public void updateTick(World world, int x, int y, int z, Random random) {}
-	
+
+    public boolean isOpaqueCube() { return false; }
+    public boolean renderAsNormalBlock() { return false; }
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int par2, int par3, int i) {
+        return null;
+    }
+    
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		if (entity.ridingEntity == null && entity.riddenByEntity == null) {
 			if (entity instanceof EntityPlayerMP) {
 				EntityPlayerMP thePlayer = (EntityPlayerMP) entity;
-				if (entity.dimension != MersEtOceans.dimension)
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, MersEtOceans.dimension, new TeleporterMO(thePlayer.mcServer.worldServerForDimension(MersEtOceans.dimension)));
-				else
-					thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterMO(thePlayer.mcServer.worldServerForDimension(0)));
+				//if (entity.dimension != MersEtOceans.dimension)
+				//	thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, MersEtOceans.dimension, new TeleporterMO(thePlayer.mcServer.worldServerForDimension(MersEtOceans.dimension)));
+				//else
+				//	thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterMO(thePlayer.mcServer.worldServerForDimension(0)));
 			}
 		}
 	}

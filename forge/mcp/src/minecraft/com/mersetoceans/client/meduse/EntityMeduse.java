@@ -22,16 +22,19 @@ public class EntityMeduse extends EntitySquid {
 	
 	public EntityMeduse(World world) {
 		super(world);
-		//moveSpeed = 0.25F;
-		//tasks.addTask(0, new EntityAISwimming(this));
+		///moveSpeed = 0.25F;
+		///tasks.addTask(0, new EntityAISwimming(this));
         //tasks.addTask(1, new EntityAIBreakDoor(this));
         //tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, this.moveSpeed, false));
         //tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         //tasks.addTask(4, new EntityAIWander(this, this.moveSpeed));
-        //targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-        //targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
+        ///targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+        ///targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
 	}
-
+	
+	public String getTexture() { return ClientProxy.MEDUSE_PNG; }
+	
+/*
 	public int getAttackStrength(Entity entity) { return 4; }
 
 	protected boolean isAIEnabled() { return true; }
@@ -40,7 +43,7 @@ public class EntityMeduse extends EntitySquid {
 
 	public EnumCreatureAttribute getCreatureAttribute() { return EnumCreatureAttribute.UNDEAD; }
 
-	public String getTexture() { return ClientProxy.MEDUSE_PNG; }
+	
 
 	public int getTotalArmorValue() { return 2; }
 
@@ -76,6 +79,6 @@ public class EntityMeduse extends EntitySquid {
     protected void dropFewItems(boolean par1, int par2) {
 	    if(this.rand.nextInt(3) == 0)
 	    	this.dropItem(Item.appleRed.itemID, 1);
-    }
+    }*/
 
 }

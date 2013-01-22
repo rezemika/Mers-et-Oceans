@@ -26,7 +26,8 @@ public class BlockGrassMO extends BlockGrass {
     
     public int getBlockTexture(IBlockAccess iBlockAccess, int x, int y, int z, int side) {
     	int meta = iBlockAccess.getBlockMetadata(x, y, z);
-    	if( meta == 1 ) return 33;
+    	int id = iBlockAccess.getBlockId(x, y+1, z);
+    	if( meta == 1 || (id != 0 && id != 9) ) return 33;
         return side == 1 ? 1 : (side == 0 ? 33 : 17);
     }
     

@@ -11,7 +11,7 @@ public class RenderMeduse extends RenderLiving {
 	
 	public RenderMeduse (ModelMeduse modelTutorial, float f) {
 		super(modelTutorial, f);
-		model = ((ModelMeduse)mainModel);
+		model = (ModelMeduse) mainModel;
 	}
 
 	public void renderTutorial(EntityMeduse entity, double par2, double par4, double par6, float par8, float par9) {

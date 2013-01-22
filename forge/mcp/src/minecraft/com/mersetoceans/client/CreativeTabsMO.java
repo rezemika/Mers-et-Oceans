@@ -21,7 +21,9 @@ public class CreativeTabsMO extends CreativeTabs {
 	
 	@Override
 	public ItemStack getIconItemStack() {
-		if( this.tabLabel == "OceansMaterials" )
+		if( this.tabLabel == "OceansTools" )
+			return new ItemStack(MersEtOceans.swordPerle);
+		else if( this.tabLabel == "OceansMaterials" )
 			return new ItemStack(MersEtOceans.perle);
 		else if( this.tabLabel == "OceansFood" )
 			return new ItemStack(MersEtOceans.huitreOuverte);

@@ -24,15 +24,21 @@ public class BlockStartVague extends Block {
 
     	if( !world.isRemote ) {
 
-    		int bempty = world.getBlockId(x, y-2, z);
+    		int ny = y;
+    		do { ny--; }
+    		while ( world.getBlockId(x, ny, z) != 9 );
+    		
+    		MersEtOceans.waterStill.maj(world, x, ny, z);
+    		
+    		//int bempty = world.getBlockId(x, y-2, z);
     		//int bwater = world.getBlockId(x, y-2, z);
     		
-    		if ( /*bwater == 9 &&*/ bempty == 0 ) {
+    		//if ( /*bwater == 9 &&*/ bempty == 0 ) {
 
     			//MersEtOceans.vague.init(world, x, y-2, z, x, z, 0);
-    			//MersEtOceans.waterStill.init(world, x, y-2, z, x, z, 0);
+    			//
     			
-	        }
+	        //}
     	}
         return true;
     	
