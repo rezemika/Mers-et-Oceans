@@ -1,10 +1,11 @@
 package com.mersetoceans;
 
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.Timer;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityEggInfo;
@@ -15,7 +16,6 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.ModLoader;
-import net.minecraft.util.Timer;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
@@ -25,7 +25,6 @@ import net.minecraftforge.common.MinecraftForge;
 import com.mersetoceans.client.CreativeTabsMO;
 import com.mersetoceans.client.meduse.EntityMeduse;
 import com.mersetoceans.common.CommonProxy;
-import com.mersetoceans.common.MinecraftMO;
 import com.mersetoceans.common.TileEntityVague;
 import com.mersetoceans.common.blocks.BlockGrassMO;
 import com.mersetoceans.common.blocks.BlockMO;
@@ -40,6 +39,12 @@ import com.mersetoceans.common.dimension.WorldProviderMO;
 import com.mersetoceans.common.items.ItemFoodMO;
 import com.mersetoceans.common.items.ItemHuitreFermee;
 import com.mersetoceans.common.items.ItemMO;
+import com.mersetoceans.common.items.ItemMoondial;
+import com.mersetoceans.common.maree.TimerMaree;
+import com.mersetoceans.common.maree.TimerVague;
+import com.mersetoceans.common.particle.PD_EntityParticleDeco;
+import com.mersetoceans.common.particle.PD_ModelParticleDeco;
+import com.mersetoceans.common.particle.PD_RenderParticleDeco;
 import com.mersetoceans.common.stuffperle.ArmurePerle;
 import com.mersetoceans.common.stuffperle.AxePerle;
 import com.mersetoceans.common.stuffperle.HoePerle;
@@ -50,11 +55,11 @@ import com.mersetoceans.common.stuffscaphandre.ArmureScaphandre;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -112,13 +117,12 @@ public class MersEtOceans {
 		
 
 	    ModLoader.registerEntityID(PD_EntityParticleDeco.class, "ParticleDeco", ModLoader.getUniqueEntityId());
-		
+	    
 	}
 
-	  public void addRenderer(Map map)
-	  {
+	public void addRenderer(Map map) {
 	    map.put(PD_EntityParticleDeco.class, new PD_RenderParticleDeco(new PD_ModelParticleDeco(), 0.0F));
-	  }
+	}
 
 	public static int getUniqueEntityId() {
 		do {
@@ -425,6 +429,44 @@ public class MersEtOceans {
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+	private static float maree;
+    public static double wind = 0;//Math.toRadians(Math.random() * 360);
+    public static ArrayList<ArrayList[]> vagues;
+
+    @PostInit
+    public void postInit(FMLPostInitializationEvent event) {
+        Timer timer = new Timer();
+        vagues = new ArrayList<ArrayList[]>();
+        timer.scheduleAtFixedRate ( new TimerMaree(), 0, 20000/*157500*/);
+        timer.scheduleAtFixedRate ( new TimerVague(), 0, 500/*157500*/);
+	}
+	
+	public static float getMaree( World world ) {
+		
+		float TD = world.getWorldTime() / 3000F;
+		int moon = world.getMoonPhase( new net.minecraft.util.Timer(20.0F).renderPartialTicks );
+		
+	    if( moon < 4 ) maree = -(TD%32);
+	    else maree = -32 + (TD%32);
+	    
+		return 0;//maree;
+	}
+	
+	
+	
 	
 	
 	

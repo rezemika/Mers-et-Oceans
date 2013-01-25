@@ -4,7 +4,7 @@ Mers et Oceans
 Contribuer
 ----------
 
-Première étape : [Bienvenue sur git](http://www.alexgirard.com/git-book/1_bienvenue_sur_git.html)     
+Première étape : [Bienvenue sur git](http://git-scm.com/book/fr/)     
 A lire et à comprendre :) ( et on ne s'arrête pas à la première page )
 
 Tester

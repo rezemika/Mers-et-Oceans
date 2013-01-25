@@ -12,9 +12,9 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.mersetoceans.MersEtOceans;
-import com.mersetoceans.PD_EntityParticleDeco;
 import com.mersetoceans.client.ClientProxy;
 import com.mersetoceans.common.TileEntityVague;
+import com.mersetoceans.common.particle.PD_EntityParticleDeco;
 
 public class BlockWater extends BlockStationary {
 	

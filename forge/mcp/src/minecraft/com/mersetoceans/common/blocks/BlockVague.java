@@ -24,9 +24,13 @@ public class BlockVague extends BlockFluidMO {
 	}
 	
 	@Override
-	public String getTextureFile () { return CommonProxy.WATER_PNG; }
+	public String getTextureFile () {
+		return CommonProxy.BLOCK_PNG;//CommonProxy.WATER_PNG;
+	}
 	
-    public int getRenderType() { return ClientProxy.RENDERVAGUE; }
+    public int getRenderType() {
+    	return  0;//ClientProxy.RENDERVAGUE;
+    }
     
     public int getBlockTextureFromSideAndMetadata( int stap, int meta ) {
     	if( meta == 0 ) return (stap/20)%32;
@@ -39,7 +43,7 @@ public class BlockVague extends BlockFluidMO {
 		par1World.setBlockWithNotify(par2, par3, par4, this.blockID);
 	}
 
-	/*public void init(World world, int x, int y, int z, int centerX, int centerZ, int step) {
+	public void init(World world, int x, int y, int z, int centerX, int centerZ, int step) {
 
     	int id = world.getBlockId(x, y, z);
     	int id2 = world.getBlockId(x, y-1, z);
@@ -52,7 +56,7 @@ public class BlockVague extends BlockFluidMO {
 	    	//world.scheduleBlockUpdate(x, y, z, this.blockID, 10);
     	}
 		
-	}*/
+	}
     
     /*public void updateTick(World world, int x, int y, int z, Random random) {
     	System.err.println("update");
