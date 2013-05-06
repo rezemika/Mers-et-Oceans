@@ -1,5 +1,22 @@
 
-solo
+solo/bin
+solo/config
+solo/coremods
+
+solo/bin
+solo/config
+solo/coremods
+solo/lib
+solo/resources
+solo/saves
+solo/screenshots
+solo/stats
+solo/texturepacks
+solo/texturepacks-mp-cache
+solo/*.*
+solo/*.*
+solo/lastlogin
+
 serveur
 
 forge/client
