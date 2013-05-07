@@ -20,9 +20,9 @@ public class WorldGeneratorMO implements IWorldGenerator {
         	int x, y, z; 
         	
         	// Huitre
+            x = chunkX*16+random.nextInt(16);
+            z = chunkZ*16+random.nextInt(16);
         	for ( y = 66; y > 0; y-- ) {
-                x = chunkX*16+random.nextInt(16);
-                z = chunkZ*16+random.nextInt(16);
                 if ( !world.isAirBlock(x, y, z) && world.getBlockMaterial(x, y, z) != Material.water ) {
                 	if (   world.getBlockMaterial(x, y, z)   == Material.rock
                 		&& world.getBlockMaterial(x, y+1, z) == Material.water
@@ -31,16 +31,15 @@ public class WorldGeneratorMO implements IWorldGenerator {
                 	}
                 	y=-1;
                 }
-                
             }
 
         	// Palourde
+            x = chunkX*16+ random.nextInt(16);
+            z = chunkZ*16+ random.nextInt(16);
         	for ( y = 80; y > 0; y-- ) {
-                x = chunkX*16+ random.nextInt(16) + random.nextInt(4) - 2;
-                z = chunkZ*16+ random.nextInt(16) + random.nextInt(4) - 2;
-                if ( !world.isAirBlock(x, y, z) ) {
+                if ( !world.isAirBlock(x, y, z) && world.getBlockMaterial(x, y, z) != Material.water ) {
                 	if ( world.getBlockId(x, y, z) == Block.sand.blockID && MersEtOceans.palourdeSand.isWaterNearby(world, x, y, z) ) {
-	                	world.setBlock(x, y, z, Block.glowStone.blockID);
+	                	world.setBlock(x, y, z, MersEtOceans.palourdeSand.blockID);
 	                }
                 	y=-1;
                 }

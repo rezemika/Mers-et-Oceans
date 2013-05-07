@@ -7,8 +7,8 @@ import net.minecraft.item.ItemFood;
 
 public class ItemFoodMO extends ItemFood {
 
-	public ItemFoodMO(int id, String name, int healAmount, float saturationModifier, boolean isWolfsFavoriteMeat) {
-		super(id, healAmount, saturationModifier, isWolfsFavoriteMeat);
+	public ItemFoodMO(int id, String name, int healAmount) {
+		super(id, healAmount, .3F, false);
 		setFull3D();
 		setUnlocalizedName("mersetoceans:"+name);
 	}

@@ -1,13 +1,10 @@
 package mods.mersetoceans;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-
 import mods.mersetoceans.armure.ArmurePerle;
 import mods.mersetoceans.armure.ArmureScaphandre;
 import mods.mersetoceans.client.CreativeTabsMO;
 import mods.mersetoceans.common.CommonProxy;
-import mods.mersetoceans.common.PotionMO;
+import mods.mersetoceans.common.EventHookContainerMO;
 import mods.mersetoceans.common.biome.BiomeGenAbysses;
 import mods.mersetoceans.common.biome.WorldGeneratorMO;
 import mods.mersetoceans.common.blocks.BlockGrassMO;
@@ -22,7 +19,6 @@ import mods.mersetoceans.common.items.ItemMO;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
@@ -32,7 +28,6 @@ import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.potion.Potion;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -49,7 +44,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "2.0.10")
+@Mod(modid = "mersetoceans", name = "Mers Et Oceans", version = "1.3.12")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class MersEtOceans {
@@ -62,10 +57,11 @@ public class MersEtOceans {
     
     // items
 	public static ItemHuitreFermee huitreFermee = new ItemHuitreFermee (700, "huitreFermee");
-	public static ItemFoodMO huitreOuverte = new ItemFoodMO (702, "huitreOuverte", 4, .3F, false);
-	public static ItemMO perle = new ItemMO (707, "perle");
-	public static ItemMO lingoPerle = new ItemMO (715, "lingoPerle");
-	public static ItemFoodMO palourde = new ItemFoodMO (702, "palourde", 4, .3F, false);
+	public static ItemFoodMO huitreOuverte = new ItemFoodMO (701, "huitreOuverte", 1);
+	public static ItemMO perle = new ItemMO (702, "perle");
+	public static ItemMO lingoPerle = new ItemMO (703, "lingoPerle");
+	public static ItemFoodMO palourde = new ItemFoodMO (704, "palourde", 1);
+	public static ItemFoodMO palourdeCuit = new ItemFoodMO (705, "palourdeOuverte", 4);
 	
     // block
 	public static BlockMO rock = (BlockMO) new BlockMO (251, "rock", Material.rock).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep);
@@ -73,7 +69,7 @@ public class MersEtOceans {
 	public static BlockGrassMO grassAbysse = (BlockGrassMO) new BlockGrassMO (253, "grassAbysse_1").setHardness(0.6F).setStepSound(Block.soundGrassFootstep);
 	public static BlockHuitre blockHuitre = (BlockHuitre) new BlockHuitre (254, "blockHuitre");
 	public static BlockPaneMO verreRenforce = (BlockPaneMO) new BlockPaneMO (727, "verreRenforce", Material.glass).setStepSound(Block.soundGlassFootstep);
-	public static BlockPalourdeSand palourdeSand = new BlockPalourdeSand (255, "sand");
+	public static BlockPalourdeSand palourdeSand = new BlockPalourdeSand (255, "palourdeSand");
     
     // tools
 	public static EnumToolMaterial materielperle = EnumHelper.addToolMaterial("materielperle", 4, 2343, 10.0F, 4, 15);
@@ -131,6 +127,9 @@ public class MersEtOceans {
 		GameRegistry.addRecipe(new ItemStack(lingoPerle, 1),
 				new Object[] {  "XXX" , "XXX" , "XXX" , 'X', perle });
 		
+		GameRegistry.addSmelting(rock.blockID, new ItemStack(rocklisse, 1), .1F);
+		GameRegistry.addSmelting(palourde.itemID, new ItemStack(palourdeCuit, 1), .1F);
+		
 		GameRegistry.addRecipe(new ItemStack(swordPerle, 1),
 			new Object[] {  "X" ,  "X" ,  "I" , 'I', Item.stick, 'X', lingoPerle });
 		GameRegistry.addRecipe(new ItemStack(pickaxePerle, 1),
@@ -167,7 +166,8 @@ public class MersEtOceans {
 		LanguageRegistry.addName(huitreOuverte, "Huitre Ouverte");
 		LanguageRegistry.addName(perle, "Perle");
 		LanguageRegistry.addName(lingoPerle, "Lingo perle");
-		LanguageRegistry.addName(palourde, "palourde");
+		LanguageRegistry.addName(palourde, "Palourde");
+		LanguageRegistry.addName(palourdeCuit, "Palourde Cuit");
 		
 		LanguageRegistry.addName(rock, "Rock");
 		LanguageRegistry.addName(rocklisse, "Rock Lisse");
@@ -205,6 +205,7 @@ public class MersEtOceans {
 		perle.setCreativeTab(tabOceanMaterials);
 		lingoPerle.setCreativeTab(tabOceanMaterials);
 		palourde.setCreativeTab(tabOceanFood);
+		palourdeCuit.setCreativeTab(tabOceanFood);
 		
 		rock.setCreativeTab(tabOceanBlock);
 		rocklisse.setCreativeTab(tabOceanBlock);
@@ -274,6 +275,8 @@ public class MersEtOceans {
 		registerBiome();
 		Recipes();
 		registerLang();
+		
+		MinecraftForge.EVENT_BUS.register(new EventHookContainerMO());
 
 	}
 	
