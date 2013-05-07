@@ -16,7 +16,7 @@ Voici un tuto : http://www.minecraft-france.fr/2012/09/tutoriel-installer-forge-
 Lancé Minecraft une fois avec forge ( vous aller voir il y à une sorte de mise à jour supplémentaire )     
 Un nouveau dossier mods va apparaître (pouf) à coté du bin.
 
-Mettez les fichier jar du mod, le plus récent trouver [ici](https://github.com/rezemika/Mers-et-Oceans/tree/master/mods).    
+Mettez les fichier jar du mod, le plus récent trouver [ici](https://github.com/rezemika/Mers-et-Oceans/tree/master/solo/mods).    
 Et relancez.
 
 enjoy :)
